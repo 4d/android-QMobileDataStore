@@ -21,4 +21,6 @@ dependencies {
     implementation Libs.androidx_room_runtime
     implementation Libs.androidx_room
     kapt Libs.androidx_room_compiler
+
+    implementation Libs.retrofit_converter_gson
 }
