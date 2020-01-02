@@ -22,8 +22,6 @@ dependencies {
     implementation Libs.androidx_room
     kapt Libs.androidx_room_compiler
 
+    // Gson
     implementation Libs.retrofit_converter_gson
-
-    // Kotlin
-//    implementation Libs.kotlin_reflect
 }
