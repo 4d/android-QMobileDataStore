@@ -24,4 +24,12 @@ dependencies {
 
     // Gson
     implementation Libs.retrofit_converter_gson
+
+    // Unit tests
+//    testImplementation Libs.androidx_junit
+    testImplementation Libs.junit
+//    testImplementation Libs.robolectric
+//    testImplementation Libs.androidx_core_testing
+    androidTestImplementation Libs.androidx_core_testing
+    androidTestImplementation Libs.androidx_junit
 }
