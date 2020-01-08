@@ -6,52 +6,49 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.qmarciset.androidmobiledatastore.DATABASE_NAME
 
-class AppDatabaseFactory {
+object AppDatabaseFactory {
 
-    companion object {
+    // For Singleton instantiation
+    @Volatile
+    var INSTANCES = mutableMapOf<Class<*>, Any>()
 
-        // For Singleton instantiation
-        @Volatile
-        var INSTANCES = mutableMapOf<Class<*>, Any>()
-
-        @Suppress("UNCHECKED_CAST")
-        fun <T : RoomDatabase> getAppDatabase(context: Context, roomDatabaseClass: Class<T>): T {
-            val tempInstance = INSTANCES[roomDatabaseClass] as? T
-            tempInstance?.let {
-                return it
-            }
-
-            synchronized(this) {
-                return buildDatabase(context, roomDatabaseClass)
-            }
+    @Suppress("UNCHECKED_CAST")
+    fun <T : RoomDatabase> getAppDatabase(context: Context, roomDatabaseClass: Class<T>): T {
+        val tempInstance = INSTANCES[roomDatabaseClass] as? T
+        tempInstance?.let {
+            return it
         }
 
-        private fun <T : RoomDatabase> buildDatabase(
-            context: Context,
-            roomDatabaseClass: Class<T>
-        ): T {
-            val instance = Room.databaseBuilder(
-                context.applicationContext,
-                roomDatabaseClass,
-                DATABASE_NAME
-            )
-                .allowMainThreadQueries()
-                .addCallback(object : RoomDatabase.Callback() {
-                    override fun onCreate(db: SupportSQLiteDatabase) {
-                        super.onCreate(db)
-                    }
-                })
-                .build()
-            INSTANCES[roomDatabaseClass] = instance
-            return instance
+        synchronized(this) {
+            return buildDatabase(context, roomDatabaseClass)
         }
+    }
 
-        fun <T : RoomDatabase> destroyDatabase(roomDatabaseClass: Class<T>) {
-            INSTANCES.remove(roomDatabaseClass)
-        }
+    private fun <T : RoomDatabase> buildDatabase(
+        context: Context,
+        roomDatabaseClass: Class<T>
+    ): T {
+        val instance = Room.databaseBuilder(
+            context.applicationContext,
+            roomDatabaseClass,
+            DATABASE_NAME
+        )
+            .allowMainThreadQueries()
+            .addCallback(object : RoomDatabase.Callback() {
+                override fun onCreate(db: SupportSQLiteDatabase) {
+                    super.onCreate(db)
+                }
+            })
+            .build()
+        INSTANCES[roomDatabaseClass] = instance
+        return instance
+    }
 
-        fun destroyDatabases() {
-            INSTANCES.clear()
-        }
+    fun <T : RoomDatabase> destroyDatabase(roomDatabaseClass: Class<T>) {
+        INSTANCES.remove(roomDatabaseClass)
+    }
+
+    fun destroyDatabases() {
+        INSTANCES.clear()
     }
 }
