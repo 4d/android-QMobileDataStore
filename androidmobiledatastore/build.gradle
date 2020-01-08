@@ -1,0 +1,35 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+apply from: "$rootDir/buildscripts/ktlint.gradle"
+apply from: "$rootDir/buildscripts/testlog.gradle"
+apply from: "$rootDir/buildscripts/detekt.gradle"
+apply from: "$rootDir/buildscripts/jacoco.gradle"
+apply from: "https://raw.githubusercontent.com/JakeWharton/SdkSearch/master/gradle/projectDependencyGraph.gradle"
+
+dependencies {
+
+    // Kotlin
+    implementation Libs.kotlin_stdlib
+
+    // Support
+    implementation Libs.androidx_appcompat
+
+    // Room
+    implementation Libs.androidx_room_runtime
+    implementation Libs.androidx_room
+    kapt Libs.androidx_room_compiler
+
+    // Gson
+    implementation Libs.retrofit_converter_gson
+
+    // Unit tests
+//    testImplementation Libs.androidx_junit
+    testImplementation Libs.junit
+//    testImplementation Libs.robolectric
+//    testImplementation Libs.androidx_core_testing
+    androidTestImplementation Libs.androidx_core_testing
+    androidTestImplementation Libs.androidx_junit
+}
