@@ -11,27 +11,20 @@ apply from: "https://raw.githubusercontent.com/JakeWharton/SdkSearch/master/grad
 
 dependencies {
 
-    // Kotlin
-    implementation Libs.kotlin_stdlib
-
-    // Support
+    // Common
     implementation Libs.androidx_appcompat
+    implementation Libs.kotlin_stdlib
 
     // Room
     implementation Libs.androidx_room_runtime
     implementation Libs.androidx_room
     kapt Libs.androidx_room_compiler
 
-    // Gson
+    // Utils
     implementation Libs.retrofit_converter_gson
 
-    // Unit tests
-//    testImplementation Libs.androidx_junit
+    // Testing
     testImplementation Libs.junit
-//    testImplementation Libs.robolectric
-//    testImplementation Libs.androidx_core_testing
-    androidTestImplementation Libs.androidx_core_testing
-    androidTestImplementation Libs.androidx_junit
 }
 
 def libraryGroupId = 'com.qmarciset.androidmobiledatastore'
@@ -62,12 +55,13 @@ publishing {
 }
 
 artifactory {
-    contextUrl = "${artifactory_contextUrl}"
+    def machineIP = System.getenv('ARTIFACTORY_MACHINE_IP')
+    contextUrl = "http://${machineIP}:8081/artifactory"
     publish {
         repository {
-            repoKey = artifactory_repoKey
-            username = artifactory_user
-            password = artifactory_password
+            repoKey = "libs-release-local"
+            username = System.getenv('ARTIFACTORY_USERNAME')
+            password = System.getenv('ARTIFACTORY_PASSWORD')
         }
         defaults {
             publications('aar')
