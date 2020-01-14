@@ -12,6 +12,7 @@ apply from: "https://raw.githubusercontent.com/JakeWharton/SdkSearch/master/grad
 dependencies {
 
     // Common
+    implementation Libs.androidx_appcompat
     implementation Libs.kotlin_stdlib
 
     // Room

@@ -7,6 +7,7 @@ object Versions {
     val kotlin = "1.3.61"
     val retrofit = "2.6.2"
     val room = "2.2.2"
+    val support = "1.1.0"
 }
 
 object Config {
@@ -27,6 +28,7 @@ object Tools {
 object Libs {
 
     // Common
+    val androidx_appcompat = "androidx.appcompat:appcompat:${Versions.support}"
     val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
 
     // Room
