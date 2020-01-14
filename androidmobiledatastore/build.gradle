@@ -12,12 +12,11 @@ apply from: "https://raw.githubusercontent.com/JakeWharton/SdkSearch/master/grad
 dependencies {
 
     // Common
-    implementation Libs.androidx_appcompat
     implementation Libs.kotlin_stdlib
 
     // Room
-    implementation Libs.androidx_room_runtime
     implementation Libs.androidx_room
+    implementation Libs.androidx_room_runtime
     kapt Libs.androidx_room_compiler
 
     // Utils
