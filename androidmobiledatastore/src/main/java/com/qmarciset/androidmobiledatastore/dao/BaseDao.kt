@@ -10,15 +10,19 @@ interface BaseDao<T> {
 
     val tableName: String
 
+    // Inserts a list of entities
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(obj: List<T>)
 
+    // Inserts an entity
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(obj: T)
 
+    // Updates an entity
     @Update
     fun update(obj: T)
 
+    // Deletes an entity
     @Delete
     fun delete(obj: T)
 
@@ -26,10 +30,13 @@ interface BaseDao<T> {
      * To be overridden
      */
 
+    // Gets all entities
     fun getAll(): LiveData<List<T>>
 
+    // Gets an entity
     fun getOne(id: String): LiveData<T>
 
+    // Deletes table
     fun deleteAll()
 
     // custom query definition
