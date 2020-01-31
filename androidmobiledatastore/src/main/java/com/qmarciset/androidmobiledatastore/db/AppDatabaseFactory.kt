@@ -12,6 +12,9 @@ object AppDatabaseFactory {
     @Volatile
     var INSTANCES = mutableMapOf<Class<*>, Any>()
 
+    /**
+     * Returns instanced database or builds a new one
+     */
     @Suppress("UNCHECKED_CAST")
     fun <T : RoomDatabase> getAppDatabase(context: Context, roomDatabaseClass: Class<T>): T {
         val tempInstance = INSTANCES[roomDatabaseClass] as? T
@@ -24,6 +27,9 @@ object AppDatabaseFactory {
         }
     }
 
+    /**
+     * Builds database
+     */
     private fun <T : RoomDatabase> buildDatabase(
         context: Context,
         roomDatabaseClass: Class<T>
@@ -44,10 +50,16 @@ object AppDatabaseFactory {
         return instance
     }
 
+    /**
+     * Destroys given database
+     */
     fun <T : RoomDatabase> destroyDatabase(roomDatabaseClass: Class<T>) {
         INSTANCES.remove(roomDatabaseClass)
     }
 
+    /**
+     * Destroys all databases
+     */
     fun destroyDatabases() {
         INSTANCES.clear()
     }
