@@ -39,8 +39,6 @@ object Libs {
 
     // Room
     val androidx_room = "androidx.room:room-ktx:${Versions.room}"
-    val androidx_room_compiler = "androidx.room:room-compiler:${Versions.room}"
-    val androidx_room_runtime = "androidx.room:room-runtime:${Versions.room}"
 
     // Utils
     val retrofit_converter_gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
