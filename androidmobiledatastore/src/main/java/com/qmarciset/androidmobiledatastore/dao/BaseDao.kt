@@ -10,54 +10,85 @@ import androidx.lifecycle.LiveData
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
+import androidx.room.Transaction
 import androidx.room.Update
 
-interface BaseDao<T> {
+abstract class BaseDao<T> {
 
-    val tableName: String
-
-    /**
-     * Inserts a list of entities
-     */
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(obj: List<T>)
+    abstract val tableName: String
 
     /**
      * Inserts an entity
      */
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(obj: T)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    abstract fun insert(obj: T): Long
+
+    /**
+     * Inserts a list of entities
+     */
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    abstract fun insertAll(obj: List<T>): List<Long>
 
     /**
      * Updates an entity
      */
     @Update
-    fun update(obj: T)
+    abstract fun update(obj: T)
+
+    /**
+     * Updates a list of entities
+     */
+    @Update
+    abstract fun updateAll(objList: List<T>)
+
+    /**
+     * Tries to insert an entity. If it already exists, updates it.
+     */
+    @Transaction
+    open fun insertOrUpdate(obj: T) {
+        val id = insert(obj)
+        if (id == -1L) update(obj)
+    }
+
+    /**
+     * Tries to insert a list of entities. If an entity already exists, updates it.
+     */
+    @Transaction
+    open fun insertOrUpdateAll(objList: List<T>) {
+        val insertResult = insertAll(objList)
+        val updateList = mutableListOf<T>()
+
+        for (i in insertResult.indices) {
+            if (insertResult[i] == -1L) updateList.add(objList[i])
+        }
+
+        if (updateList.isNotEmpty()) updateAll(updateList)
+    }
 
     /**
      * Deletes an entity
      */
     @Delete
-    fun delete(obj: T)
+    abstract fun delete(obj: T)
 
     /**
-     * To be overridden
+     * To be overridden by custom Dao
      */
-
-    /**
-     * Gets all entities
-     */
-    fun getAll(): LiveData<List<T>>
 
     /**
      * Gets an entity
      */
-    fun getOne(id: String): LiveData<T>
+    abstract fun getOne(id: String): LiveData<T>
+
+    /**
+     * Gets all entities
+     */
+    abstract fun getAll(): LiveData<List<T>>
 
     /**
      * Deletes table
      */
-    fun deleteAll()
+    abstract fun deleteAll()
 
     // custom query definition
     //    fun customQuery()
