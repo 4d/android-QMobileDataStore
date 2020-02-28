@@ -12,7 +12,7 @@ object Versions {
     val junit = "4.13"
     val kotlin = "1.3.61"
     val retrofit = "2.7.1"
-    val room = "2.2.3"
+    val room = "2.2.4"
     val support = "1.1.0"
 }
 
