@@ -8,9 +8,9 @@ import org.gradle.api.JavaVersion
 
 object Versions {
     val android_gradle_plugin = "3.5.2"
-    val artifactory = "4.13.0"
+    val artifactory = "4.14.1"
     val junit = "4.13"
-    val kotlin = "1.3.61"
+    val kotlin = "1.3.70"
     val retrofit = "2.7.1"
     val room = "2.2.4"
     val support = "1.1.0"
