@@ -22,5 +22,7 @@ interface BaseRoomRepository<T> {
 
     fun delete(obj: T)
 
+    fun deleteOne(id: String)
+
     fun deleteAll()
 }

@@ -86,6 +86,11 @@ abstract class BaseDao<T> {
     abstract fun getAll(): LiveData<List<T>>
 
     /**
+     * Deletes an entity
+     */
+    abstract fun deleteOne(id: String)
+
+    /**
      * Deletes table
      */
     abstract fun deleteAll()

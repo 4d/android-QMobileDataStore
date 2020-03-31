@@ -32,6 +32,10 @@ class RoomRepository<T>(private val baseDao: BaseDao<T>) :
         baseDao.delete(obj)
     }
 
+    override fun deleteOne(id: String) {
+        return baseDao.deleteOne(id)
+    }
+
     override fun deleteAll() {
         baseDao.deleteAll()
     }
