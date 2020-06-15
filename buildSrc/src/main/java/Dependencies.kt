@@ -11,7 +11,7 @@ object Versions {
     val artifactory = "4.15.2"
     val junit = "4.13"
     val kotlin = "1.3.72"
-    val retrofit = "2.8.2"
+    val retrofit = "2.9.0"
     val room = "2.2.5"
     val support = "1.1.0"
 }
