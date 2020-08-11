@@ -13,6 +13,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Transaction
 import androidx.room.Update
 
+@Suppress("TooManyFunctions")
 abstract class BaseDao<T> {
 
     abstract val tableName: String
