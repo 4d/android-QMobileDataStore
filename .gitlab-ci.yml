@@ -74,6 +74,7 @@ buildLinux:
 
 buildOsx:
   stage: build
+  allow_failure: true
   script:
     - *download_sdk_osx
     - *build_sdk
