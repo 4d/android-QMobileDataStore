@@ -72,21 +72,6 @@ buildLinux:
     paths:
      - androidmobiledatastore/build/outputs/aar/
 
-buildOsx:
-  stage: build
-  allow_failure: true
-  script:
-    - *download_sdk_osx
-    - *build_sdk
-    - ./gradlew clean --console=rich
-    - ./gradlew assemble --console=rich
-    - ./gradlew artifactoryPublish --console=rich
-  tags:
-    - osx
-  artifacts:
-    paths:
-     - androidmobiledatastore/build/outputs/aar/
-
 unitTests:
   stage: test
   script:
