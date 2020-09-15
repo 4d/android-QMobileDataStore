@@ -48,7 +48,9 @@ abstract class BaseDao<T> {
     @Transaction
     open fun insertOrUpdate(obj: T) {
         val id = insert(obj)
-        if (id == -1L) update(obj)
+        if (id == -1L) {
+            update(obj)
+        }
     }
 
     /**
@@ -85,6 +87,10 @@ abstract class BaseDao<T> {
      * Gets all entities
      */
     abstract fun getAll(): LiveData<List<T>>
+
+//    abstract fun update(obj: T)
+
+//    abstract fun updateAll(objList: List<T>)
 
     /**
      * Deletes an entity

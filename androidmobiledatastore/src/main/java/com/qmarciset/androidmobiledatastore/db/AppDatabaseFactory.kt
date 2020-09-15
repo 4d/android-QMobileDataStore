@@ -77,11 +77,13 @@ object AppDatabaseFactory {
         if (!::db.isInitialized) {
             db = Room.databaseBuilder(context.applicationContext, roomDatabaseClass, DATABASE_NAME)
                 .allowMainThreadQueries()
-                .addCallback(object : RoomDatabase.Callback() {
-                    override fun onCreate(db: SupportSQLiteDatabase) {
-                        super.onCreate(db)
+                .addCallback(
+                    object : RoomDatabase.Callback() {
+                        override fun onCreate(db: SupportSQLiteDatabase) {
+                            super.onCreate(db)
+                        }
                     }
-                })
+                )
                 .build()
         }
         return db as T
