@@ -11,5 +11,5 @@ import com.qmarciset.androidmobiledatastore.data.RoomRelation
 
 interface RelationBaseDao<R : RoomRelation> {
 
-    fun getManyToOneRelation(relationId: String): LiveData<List<R>>
+    fun getManyToOneRelation(relationId: String): LiveData<R>
 }
