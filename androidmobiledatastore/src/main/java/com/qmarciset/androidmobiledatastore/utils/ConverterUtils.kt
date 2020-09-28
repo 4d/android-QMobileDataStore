@@ -4,7 +4,7 @@
  * Copyright (c) 2020 Quentin Marciset. All rights reserved.
  */
 
-package com.qmarciset.androidmobiledatastore
+package com.qmarciset.androidmobiledatastore.utils
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

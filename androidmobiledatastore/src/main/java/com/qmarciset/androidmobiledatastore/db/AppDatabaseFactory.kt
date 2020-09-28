@@ -10,7 +10,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.qmarciset.androidmobiledatastore.DATABASE_NAME
+import com.qmarciset.androidmobiledatastore.utils.DATABASE_NAME
 
 object AppDatabaseFactory {
 
