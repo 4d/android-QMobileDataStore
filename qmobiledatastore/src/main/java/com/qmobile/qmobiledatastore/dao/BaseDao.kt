@@ -4,7 +4,7 @@
  * Copyright (c) 2020 Quentin Marciset. All rights reserved.
  */
 
-package com.qmarciset.androidmobiledatastore.dao
+package com.qmobile.qmobiledatastore.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Delete

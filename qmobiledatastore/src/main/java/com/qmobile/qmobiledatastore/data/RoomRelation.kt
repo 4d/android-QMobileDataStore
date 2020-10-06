@@ -4,6 +4,9 @@
  * Copyright (c) 2020 Quentin Marciset. All rights reserved.
  */
 
-package com.qmarciset.androidmobiledatastore.data
+package com.qmobile.qmobiledatastore.data
 
-interface RoomData
+interface RoomRelation {
+    val first: RoomData?
+    val second: RoomData?
+}

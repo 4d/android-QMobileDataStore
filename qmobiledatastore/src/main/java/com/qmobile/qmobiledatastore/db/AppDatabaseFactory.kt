@@ -4,13 +4,13 @@
  * Copyright (c) 2020 Quentin Marciset. All rights reserved.
  */
 
-package com.qmarciset.androidmobiledatastore.db
+package com.qmobile.qmobiledatastore.db
 
 import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.qmarciset.androidmobiledatastore.utils.DATABASE_NAME
+import com.qmobile.qmobiledatastore.utils.DATABASE_NAME
 
 object AppDatabaseFactory {
 

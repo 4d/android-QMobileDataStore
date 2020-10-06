@@ -4,7 +4,7 @@
  * Copyright (c) 2020 Quentin Marciset. All rights reserved.
  */
 
-package com.qmarciset.androidmobiledatastore.repository
+package com.qmobile.qmobiledatastore.repository
 
 import androidx.lifecycle.LiveData
 

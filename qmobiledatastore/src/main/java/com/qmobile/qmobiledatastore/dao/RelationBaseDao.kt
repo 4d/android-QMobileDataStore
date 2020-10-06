@@ -4,10 +4,10 @@
  * Copyright (c) 2020 Quentin Marciset. All rights reserved.
  */
 
-package com.qmarciset.androidmobiledatastore.dao
+package com.qmobile.qmobiledatastore.dao
 
 import androidx.lifecycle.LiveData
-import com.qmarciset.androidmobiledatastore.data.RoomRelation
+import com.qmobile.qmobiledatastore.data.RoomRelation
 
 interface RelationBaseDao<R : RoomRelation> {
 

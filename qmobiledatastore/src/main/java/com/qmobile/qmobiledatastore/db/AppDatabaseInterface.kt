@@ -4,11 +4,11 @@
  * Copyright (c) 2020 Quentin Marciset. All rights reserved.
  */
 
-package com.qmarciset.androidmobiledatastore.db
+package com.qmobile.qmobiledatastore.db
 
-import com.qmarciset.androidmobiledatastore.dao.BaseDao
-import com.qmarciset.androidmobiledatastore.dao.RelationBaseDao
-import com.qmarciset.androidmobiledatastore.data.RoomRelation
+import com.qmobile.qmobiledatastore.dao.BaseDao
+import com.qmobile.qmobiledatastore.dao.RelationBaseDao
+import com.qmobile.qmobiledatastore.data.RoomRelation
 
 interface AppDatabaseInterface {
 

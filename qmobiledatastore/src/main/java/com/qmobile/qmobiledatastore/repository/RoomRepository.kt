@@ -4,10 +4,10 @@
  * Copyright (c) 2020 Quentin Marciset. All rights reserved.
  */
 
-package com.qmarciset.androidmobiledatastore.repository
+package com.qmobile.qmobiledatastore.repository
 
 import androidx.lifecycle.LiveData
-import com.qmarciset.androidmobiledatastore.dao.BaseDao
+import com.qmobile.qmobiledatastore.dao.BaseDao
 
 class RoomRepository<T>(private val baseDao: BaseDao<T>) :
     BaseRoomRepository<T> {

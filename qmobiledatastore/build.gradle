@@ -25,8 +25,8 @@ dependencies {
     testImplementation Libs.junit
 }
 
-def libraryGroupId = 'com.qmarciset.androidmobiledatastore'
-def libraryArtifactId = 'androidmobiledatastore'
+def libraryGroupId = 'com.qmobile.qmobiledatastore'
+def libraryArtifactId = 'qmobiledatastore'
 def libraryVersion = '0.0.1'
 def buildVariant = 'release'
 
