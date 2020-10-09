@@ -75,16 +75,39 @@ object AppDatabaseFactory {
     @Suppress("UNCHECKED_CAST")
     fun <T : RoomDatabase> getAppDatabase(context: Context, roomDatabaseClass: Class<T>): T {
         if (!::db.isInitialized) {
-            db = Room.databaseBuilder(context.applicationContext, roomDatabaseClass, DATABASE_NAME)
-                .allowMainThreadQueries()
-                .addCallback(
-                    object : RoomDatabase.Callback() {
-                        override fun onCreate(db: SupportSQLiteDatabase) {
-                            super.onCreate(db)
-                        }
-                    }
+            synchronized(RoomDatabase::class.java) {
+                db = Room.databaseBuilder(
+                    context.applicationContext,
+                    roomDatabaseClass,
+                    DATABASE_NAME
                 )
-                .build()
+//                .createFromAsset("databases/static.db")
+//                .allowMainThreadQueries()
+                    .addCallback(
+                        object : RoomDatabase.Callback() {
+                            override fun onCreate(db: SupportSQLiteDatabase) {
+                                super.onCreate(db)
+                            }
+                        }
+                    )
+                    .build()
+
+//                if (!context.getDatabasePath(DATABASE_NAME).exists()) {
+//                    // Read static database
+//                    val source = context.applicationContext.assets.open("static.db").use {
+//                        it.readBytes()
+//                    }
+//                    // Write to Room database
+//                    with(context.getDatabasePath(DATABASE_NAME)) {
+//                        val folder = path.substringBeforeLast(File.separator)
+//                        File(folder).mkdirs()
+//                        writeBytes(source)
+//                    }
+//                }
+//                db = Room.databaseBuilder(context.applicationContext,
+//                    roomDatabaseClass, DATABASE_NAME)
+//                    .build()
+            }
         }
         return db as T
     }
