@@ -81,8 +81,8 @@ object AppDatabaseFactory {
                     roomDatabaseClass,
                     DATABASE_NAME
                 )
-//                .createFromAsset("databases/static.db")
-                .allowMainThreadQueries()
+                    .createFromAsset("databases/static.db")
+                    .allowMainThreadQueries()
                     .addCallback(
                         object : RoomDatabase.Callback() {
                             override fun onCreate(db: SupportSQLiteDatabase) {
@@ -91,7 +91,7 @@ object AppDatabaseFactory {
                         }
                     )
                     .build()
-
+                // Alternatively, this worked too
 //                if (!context.getDatabasePath(DATABASE_NAME).exists()) {
 //                    // Read static database
 //                    val source = context.applicationContext.assets.open("static.db").use {
