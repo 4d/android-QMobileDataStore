@@ -22,31 +22,31 @@ abstract class BaseDao<T> {
      * Inserts an entity
      */
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    abstract fun insert(obj: T): Long
+    abstract suspend fun insert(obj: T): Long
 
     /**
      * Inserts a list of entities
      */
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    abstract fun insertAll(obj: List<T>): List<Long>
+    abstract suspend fun insertAll(obj: List<T>): List<Long>
 
     /**
      * Updates an entity
      */
     @Update
-    abstract fun update(obj: T)
+    abstract suspend fun update(obj: T)
 
     /**
      * Updates a list of entities
      */
     @Update
-    abstract fun updateAll(objList: List<T>)
+    abstract suspend fun updateAll(objList: List<T>)
 
     /**
      * Tries to insert an entity. If it already exists, updates it.
      */
     @Transaction
-    open fun insertOrUpdate(obj: T) {
+    open suspend fun insertOrUpdate(obj: T) {
         val id = insert(obj)
         if (id == -1L) {
             update(obj)
@@ -57,7 +57,7 @@ abstract class BaseDao<T> {
      * Tries to insert a list of entities. If an entity already exists, updates it.
      */
     @Transaction
-    open fun insertOrUpdateAll(objList: List<T>) {
+    open suspend fun insertOrUpdateAll(objList: List<T>) {
         val insertResult = insertAll(objList)
         val updateList = mutableListOf<T>()
 
@@ -72,7 +72,7 @@ abstract class BaseDao<T> {
      * Deletes an entity
      */
     @Delete
-    abstract fun delete(obj: T)
+    abstract suspend fun delete(obj: T)
 
     /**
      * To be overridden by custom Dao
@@ -95,12 +95,12 @@ abstract class BaseDao<T> {
     /**
      * Deletes an entity
      */
-    abstract fun deleteOne(id: String)
+    abstract suspend fun deleteOne(id: String)
 
     /**
      * Deletes table
      */
-    abstract fun deleteAll()
+    abstract suspend fun deleteAll()
 
     // custom query definition
     //    fun customQuery()

@@ -20,23 +20,23 @@ class RoomRepository<T>(private val baseDao: BaseDao<T>) :
         return baseDao.getAll()
     }
 
-    override fun insert(obj: T) {
+    override suspend fun insert(obj: T) {
         baseDao.insertOrUpdate(obj)
     }
 
-    override fun insertAll(objList: List<T>) {
+    override suspend fun insertAll(objList: List<T>) {
         baseDao.insertOrUpdateAll(objList)
     }
 
-    override fun delete(obj: T) {
+    override suspend fun delete(obj: T) {
         baseDao.delete(obj)
     }
 
-    override fun deleteOne(id: String) {
+    override suspend fun deleteOne(id: String) {
         return baseDao.deleteOne(id)
     }
 
-    override fun deleteAll() {
+    override suspend fun deleteAll() {
         baseDao.deleteAll()
     }
 }

@@ -16,13 +16,13 @@ interface BaseRoomRepository<T> {
 
     fun getAll(): LiveData<List<T>>
 
-    fun insert(obj: T)
+    suspend fun insert(obj: T)
 
-    fun insertAll(objList: List<T>)
+    suspend fun insertAll(objList: List<T>)
 
-    fun delete(obj: T)
+    suspend fun delete(obj: T)
 
-    fun deleteOne(id: String)
+    suspend fun deleteOne(id: String)
 
-    fun deleteAll()
+    suspend fun deleteAll()
 }

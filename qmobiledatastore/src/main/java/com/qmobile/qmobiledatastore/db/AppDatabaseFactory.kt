@@ -82,7 +82,7 @@ object AppDatabaseFactory {
                     DATABASE_NAME
                 )
                     .createFromAsset("databases/static.db")
-                    .allowMainThreadQueries()
+//                    .allowMainThreadQueries()
                     .addCallback(
                         object : RoomDatabase.Callback() {
                             override fun onCreate(db: SupportSQLiteDatabase) {
