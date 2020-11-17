@@ -25,6 +25,13 @@ dependencies {
 
     // Testing
     testImplementation Libs.junit
+
+    // Testing
+    testImplementation Libs.androidx_core_testing
+    testImplementation Libs.androidx_junit
+    testImplementation Libs.androidx_runner
+    testImplementation Libs.mockito
+    testImplementation Libs.robolectric
 }
 
 def libraryGroupId = 'com.qmobile.qmobiledatastore'
