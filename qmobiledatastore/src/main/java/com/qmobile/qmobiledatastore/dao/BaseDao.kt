@@ -12,6 +12,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Transaction
 import androidx.room.Update
+import androidx.sqlite.db.SupportSQLiteQuery
 
 @Suppress("TooManyFunctions")
 abstract class BaseDao<T> {
@@ -88,6 +89,16 @@ abstract class BaseDao<T> {
      */
     abstract fun getAll(): LiveData<List<T>>
 
+    /**
+     * Get all entitiess by SearchKey
+     *
+     */
+    abstract fun getAllSearchData(search: String): LiveData<List<T>>
+
+    /**
+     * Get All by Dynamic query
+     */
+    abstract fun getAllDynamicQuery(sqLiteQuery: SupportSQLiteQuery): LiveData<List<T>>
 //    abstract fun update(obj: T)
 
 //    abstract fun updateAll(objList: List<T>)
