@@ -36,7 +36,7 @@ dependencies {
 
 def libraryGroupId = 'com.qmobile.qmobiledatastore'
 def libraryArtifactId = 'qmobiledatastore'
-def libraryVersion = '0.0.1'
+def libraryVersion = Versions.qmobiledatastore + '-' + gitBranch()
 def buildVariant = 'release'
 
 publishing {
