@@ -7,6 +7,7 @@
 package com.qmobile.qmobiledatastore.repository
 
 import androidx.lifecycle.LiveData
+import androidx.sqlite.db.SupportSQLiteQuery
 import com.qmobile.qmobiledatastore.dao.BaseDao
 
 class RoomRepository<T>(private val baseDao: BaseDao<T>) :
@@ -38,5 +39,15 @@ class RoomRepository<T>(private val baseDao: BaseDao<T>) :
 
     override suspend fun deleteAll() {
         baseDao.deleteAll()
+    }
+
+    // getSearchAllByQuery implementation
+    override fun getSearchAllByQuery(query: String): LiveData<List<T>> {
+        return baseDao.getAllSearchData(query)
+    }
+
+    // getAllDynamicQuery
+    override fun getAllDynamicQuery(sqLiteQuery: SupportSQLiteQuery): LiveData<List<T>> {
+        return baseDao.getAllDynamicQuery(sqLiteQuery)
     }
 }
