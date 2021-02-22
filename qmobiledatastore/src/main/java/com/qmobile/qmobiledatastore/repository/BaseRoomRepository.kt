@@ -27,11 +27,7 @@ interface BaseRoomRepository<T> {
 
     suspend fun deleteAll()
 
-    // getSearchAllbyQuery
     fun getSearchAllByQuery(query: String): LiveData<List<T>>
 
-    /**
-     * Get All by Dynamic query
-     */
     fun getAllDynamicQuery(sqLiteQuery: SupportSQLiteQuery): LiveData<List<T>>
 }

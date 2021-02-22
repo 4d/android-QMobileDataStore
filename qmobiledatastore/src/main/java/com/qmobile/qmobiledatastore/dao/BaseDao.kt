@@ -90,8 +90,7 @@ abstract class BaseDao<T> {
     abstract fun getAll(): LiveData<List<T>>
 
     /**
-     * Get all entitiess by SearchKey
-     *
+     * Get all entities by search key
      */
     abstract fun getAllSearchData(search: String): LiveData<List<T>>
 
@@ -99,6 +98,7 @@ abstract class BaseDao<T> {
      * Get All by Dynamic query
      */
     abstract fun getAllDynamicQuery(sqLiteQuery: SupportSQLiteQuery): LiveData<List<T>>
+
 //    abstract fun update(obj: T)
 
 //    abstract fun updateAll(objList: List<T>)

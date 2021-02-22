@@ -41,12 +41,10 @@ class RoomRepository<T>(private val baseDao: BaseDao<T>) :
         baseDao.deleteAll()
     }
 
-    // getSearchAllByQuery implementation
     override fun getSearchAllByQuery(query: String): LiveData<List<T>> {
         return baseDao.getAllSearchData(query)
     }
 
-    // getAllDynamicQuery
     override fun getAllDynamicQuery(sqLiteQuery: SupportSQLiteQuery): LiveData<List<T>> {
         return baseDao.getAllDynamicQuery(sqLiteQuery)
     }
