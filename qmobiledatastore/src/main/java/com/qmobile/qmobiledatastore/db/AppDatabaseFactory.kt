@@ -76,20 +76,22 @@ object AppDatabaseFactory {
     fun <T : RoomDatabase> getAppDatabase(context: Context, roomDatabaseClass: Class<T>): T {
         if (!::db.isInitialized) {
             synchronized(RoomDatabase::class.java) {
-                db = Room.databaseBuilder(
+                var builder = Room.databaseBuilder(
                     context.applicationContext,
                     roomDatabaseClass,
                     DATABASE_NAME
                 )
-                    .createFromAsset("databases/static.db")
-                    .addCallback(
-                        object : RoomDatabase.Callback() {
-                            override fun onCreate(db: SupportSQLiteDatabase) {
-                                super.onCreate(db)
-                            }
+                if (context.assets.list("databases")?.contains("static.db") ?: false) {
+                    builder = builder.createFromAsset("databases/static.db")
+                }
+                builder = builder.addCallback(
+                    object : RoomDatabase.Callback() {
+                        override fun onCreate(db: SupportSQLiteDatabase) {
+                            super.onCreate(db)
                         }
-                    )
-                    .build()
+                    }
+                )
+                db = builder.build()
                 // Alternatively, this worked too
 //                if (!context.getDatabasePath(DATABASE_NAME).exists()) {
 //                    // Read static database
