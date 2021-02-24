@@ -10,6 +10,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import timber.log.Timber
 import com.qmobile.qmobiledatastore.utils.DATABASE_NAME
 
 object AppDatabaseFactory {
@@ -83,6 +84,8 @@ object AppDatabaseFactory {
                 )
                 if (context.assets.list("databases")?.contains("static.db") ?: false) {
                     builder = builder.createFromAsset("databases/static.db")
+                } else {
+                    Timber.i("No embedded database")
                 }
                 builder = builder.addCallback(
                     object : RoomDatabase.Callback() {
