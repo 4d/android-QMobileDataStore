@@ -10,6 +10,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import timber.log.Timber
 import com.qmobile.qmobiledatastore.utils.DATABASE_NAME
 
 object AppDatabaseFactory {
@@ -76,20 +77,24 @@ object AppDatabaseFactory {
     fun <T : RoomDatabase> getAppDatabase(context: Context, roomDatabaseClass: Class<T>): T {
         if (!::db.isInitialized) {
             synchronized(RoomDatabase::class.java) {
-                db = Room.databaseBuilder(
+                var builder = Room.databaseBuilder(
                     context.applicationContext,
                     roomDatabaseClass,
                     DATABASE_NAME
                 )
-                    .createFromAsset("databases/static.db")
-                    .addCallback(
-                        object : RoomDatabase.Callback() {
-                            override fun onCreate(db: SupportSQLiteDatabase) {
-                                super.onCreate(db)
-                            }
+                if (context.assets.list("databases")?.contains("static.db") == true) {
+                    builder = builder.createFromAsset("databases/static.db")
+                } else {
+                    Timber.i("No embedded database")
+                }
+                builder = builder.addCallback(
+                    object : RoomDatabase.Callback() {
+                        override fun onCreate(db: SupportSQLiteDatabase) {
+                            super.onCreate(db)
                         }
-                    )
-                    .build()
+                    }
+                )
+                db = builder.build()
                 // Alternatively, this worked too
 //                if (!context.getDatabasePath(DATABASE_NAME).exists()) {
 //                    // Read static database
