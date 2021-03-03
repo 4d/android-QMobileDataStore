@@ -82,7 +82,7 @@ object AppDatabaseFactory {
                     roomDatabaseClass,
                     DATABASE_NAME
                 )
-                if (context.assets.list("databases")?.contains("static.db") ?: false) {
+                if (context.assets.list("databases")?.contains("static.db") == true) {
                     builder = builder.createFromAsset("databases/static.db")
                 } else {
                     Timber.i("No embedded database")
