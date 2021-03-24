@@ -10,8 +10,8 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import timber.log.Timber
 import com.qmobile.qmobiledatastore.utils.DATABASE_NAME
+import timber.log.Timber
 
 object AppDatabaseFactory {
 
