@@ -85,7 +85,7 @@ object AppDatabaseFactory {
                 if (context.assets.list("databases")?.contains("static.db") == true) {
                     builder = builder.createFromAsset("databases/static.db")
                 } else {
-                    Timber.i("No embedded database")
+                    Timber.d("No embedded database")
                 }
                 builder = builder.addCallback(
                     object : RoomDatabase.Callback() {
