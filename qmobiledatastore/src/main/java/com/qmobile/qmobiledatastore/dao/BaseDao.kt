@@ -7,6 +7,7 @@
 package com.qmobile.qmobiledatastore.dao
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -97,7 +98,7 @@ abstract class BaseDao<T> {
     /**
      * Get All by Dynamic query
      */
-    abstract fun getAllDynamicQuery(sqLiteQuery: SupportSQLiteQuery): LiveData<List<T>>
+    abstract fun getAllDynamicQuery(sqLiteQuery: SupportSQLiteQuery): DataSource.Factory<Int, T>
 
 //    abstract fun update(obj: T)
 

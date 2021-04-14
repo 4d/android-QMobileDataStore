@@ -7,6 +7,7 @@
 package com.qmobile.qmobiledatastore.repository
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.sqlite.db.SupportSQLiteQuery
 import com.qmobile.qmobiledatastore.dao.BaseDao
 
@@ -45,7 +46,7 @@ class RoomRepository<T>(private val baseDao: BaseDao<T>) :
         return baseDao.getAllSearchData(query)
     }
 
-    override fun getAllDynamicQuery(sqLiteQuery: SupportSQLiteQuery): LiveData<List<T>> {
+    override fun getAllDynamicQuery(sqLiteQuery: SupportSQLiteQuery): DataSource.Factory<Int, T> {
         return baseDao.getAllDynamicQuery(sqLiteQuery)
     }
 }

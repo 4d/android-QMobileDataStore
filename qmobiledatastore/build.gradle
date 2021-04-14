@@ -21,6 +21,9 @@ dependencies {
     implementation Libs.androidx_room_runtime
     kapt Libs.androidx_room_compiler
 
+    // Paging
+    implementation Libs.androidx_paging
+
     // Utils
     implementation Libs.retrofit_converter_gson
     implementation Libs.timber
