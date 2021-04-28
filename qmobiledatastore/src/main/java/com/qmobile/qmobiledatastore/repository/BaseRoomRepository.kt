@@ -9,6 +9,7 @@ package com.qmobile.qmobiledatastore.repository
 import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.sqlite.db.SupportSQLiteQuery
+import kotlinx.coroutines.flow.Flow
 
 interface BaseRoomRepository<T> {
 
@@ -31,4 +32,6 @@ interface BaseRoomRepository<T> {
     fun getSearchAllByQuery(query: String): LiveData<List<T>>
 
     fun getAllDynamicQuery(sqLiteQuery: SupportSQLiteQuery): DataSource.Factory<Int, T>
+
+    fun getAllDynamicQueryFlow(sqLiteQuery: SupportSQLiteQuery): Flow<List<T>>
 }

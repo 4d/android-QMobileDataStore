@@ -14,6 +14,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Transaction
 import androidx.room.Update
 import androidx.sqlite.db.SupportSQLiteQuery
+import kotlinx.coroutines.flow.Flow
 
 @Suppress("TooManyFunctions")
 abstract class BaseDao<T> {
@@ -99,6 +100,7 @@ abstract class BaseDao<T> {
      * Get All by Dynamic query
      */
     abstract fun getAllDynamicQuery(sqLiteQuery: SupportSQLiteQuery): DataSource.Factory<Int, T>
+    abstract fun getAllDynamicQueryFlow(sqLiteQuery: SupportSQLiteQuery): Flow<List<T>>
 
 //    abstract fun update(obj: T)
 
