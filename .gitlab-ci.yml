@@ -15,7 +15,7 @@ before_script:
 cache:
   paths:
     - .gradle/wrapper
-    - .gradle/caches
+#    - .gradle/caches
 
 lint:
   stage: lint
