@@ -11,7 +11,6 @@ import androidx.paging.DataSource
 import androidx.sqlite.db.SupportSQLiteQuery
 import com.qmobile.qmobiledatastore.dao.BaseDao
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.flowOn
@@ -55,7 +54,6 @@ class RoomRepository<T>(private val baseDao: BaseDao<T>) :
         return baseDao.getAllDynamicQuery(sqLiteQuery)
     }
 
-    @ExperimentalCoroutinesApi
     override fun getAllDynamicQueryFlow(sqLiteQuery: SupportSQLiteQuery): Flow<List<T>> {
         return baseDao.getAllDynamicQueryFlow(sqLiteQuery) // Get searched dogs from Room Database
             // Combine the result with another flow
