@@ -10,7 +10,7 @@ import com.qmobile.qmobiledatastore.dao.BaseDao
 import com.qmobile.qmobiledatastore.dao.RelationBaseDao
 import com.qmobile.qmobiledatastore.data.RoomRelation
 
-interface AppDatabaseInterface {
+interface DaoProvider {
 
     // Returns the correct DAO object of specific type
     fun <T> getDao(tableName: String): BaseDao<T>
