@@ -9,7 +9,6 @@ package com.qmobile.qmobiledatastore.repository
 import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.sqlite.db.SupportSQLiteQuery
-import kotlinx.coroutines.flow.Flow
 
 interface BaseRoomRepository<T> {
 
@@ -17,21 +16,17 @@ interface BaseRoomRepository<T> {
     // Observed LiveData will notify the observer when the data has changed.
     fun getOne(id: String): LiveData<T>
 
-    fun getAll(): LiveData<List<T>>
+    fun getAllDynamicQuery(sqLiteQuery: SupportSQLiteQuery): DataSource.Factory<Int, T>
 
     suspend fun insert(obj: T)
 
     suspend fun insertAll(objList: List<T>)
 
-    suspend fun delete(obj: T)
-
     suspend fun deleteOne(id: String)
 
-    suspend fun deleteAll()
-
-    fun getSearchAllByQuery(query: String): LiveData<List<T>>
-
-    fun getAllDynamicQuery(sqLiteQuery: SupportSQLiteQuery): DataSource.Factory<Int, T>
-
-    fun getAllDynamicQueryFlow(sqLiteQuery: SupportSQLiteQuery): Flow<List<T>>
+//    suspend fun delete(obj: T)
+//    suspend fun deleteAll()
+//    fun getAll(): LiveData<List<T>>
+//    fun getSearchAllByQuery(query: String): LiveData<List<T>>
+//    fun getAllDynamicQueryFlow(sqLiteQuery: SupportSQLiteQuery): Flow<List<T>>
 }

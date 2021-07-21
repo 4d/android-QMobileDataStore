@@ -10,10 +10,6 @@ import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.sqlite.db.SupportSQLiteQuery
 import com.qmobile.qmobiledatastore.dao.BaseDao
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.conflate
-import kotlinx.coroutines.flow.flowOn
 
 class RoomRepository<T>(private val baseDao: BaseDao<T>) :
     BaseRoomRepository<T> {
@@ -22,8 +18,8 @@ class RoomRepository<T>(private val baseDao: BaseDao<T>) :
         return baseDao.getOne(id)
     }
 
-    override fun getAll(): LiveData<List<T>> {
-        return baseDao.getAll()
+    override fun getAllDynamicQuery(sqLiteQuery: SupportSQLiteQuery): DataSource.Factory<Int, T> {
+        return baseDao.getAllDynamicQuery(sqLiteQuery)
     }
 
     override suspend fun insert(obj: T) {
@@ -34,27 +30,27 @@ class RoomRepository<T>(private val baseDao: BaseDao<T>) :
         baseDao.insertOrUpdateAll(objList)
     }
 
-    override suspend fun delete(obj: T) {
-        baseDao.delete(obj)
-    }
-
     override suspend fun deleteOne(id: String) {
         return baseDao.deleteOne(id)
     }
 
-    override suspend fun deleteAll() {
+    /*override suspend fun delete(obj: T) {
+        baseDao.delete(obj)
+    }*/
+
+    /*override suspend fun deleteAll() {
         baseDao.deleteAll()
-    }
+    }*/
 
-    override fun getSearchAllByQuery(query: String): LiveData<List<T>> {
+    /*override fun getAll(): LiveData<List<T>> {
+      return baseDao.getAll()
+    }*/
+
+    /*override fun getSearchAllByQuery(query: String): LiveData<List<T>> {
         return baseDao.getAllSearchData(query)
-    }
+    }*/
 
-    override fun getAllDynamicQuery(sqLiteQuery: SupportSQLiteQuery): DataSource.Factory<Int, T> {
-        return baseDao.getAllDynamicQuery(sqLiteQuery)
-    }
-
-    override fun getAllDynamicQueryFlow(sqLiteQuery: SupportSQLiteQuery): Flow<List<T>> {
+    /*override fun getAllDynamicQueryFlow(sqLiteQuery: SupportSQLiteQuery): Flow<List<T>> {
         return baseDao.getAllDynamicQueryFlow(sqLiteQuery) // Get searched dogs from Room Database
             // Combine the result with another flow
 //                .combine(topBreedsFlow) { dogs, topDogs ->
@@ -64,5 +60,5 @@ class RoomRepository<T>(private val baseDao: BaseDao<T>) :
             // Return the latest values
             .conflate()
 //        return baseDao.getAllDynamicQueryFlow(sqLiteQuery)
-    }
+    }*/
 }

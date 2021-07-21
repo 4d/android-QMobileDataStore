@@ -14,7 +14,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Transaction
 import androidx.room.Update
 import androidx.sqlite.db.SupportSQLiteQuery
-import kotlinx.coroutines.flow.Flow
 
 @Suppress("TooManyFunctions")
 abstract class BaseDao<T> {
@@ -92,19 +91,9 @@ abstract class BaseDao<T> {
     abstract fun getAll(): LiveData<List<T>>
 
     /**
-     * Get all entities by search key
-     */
-    abstract fun getAllSearchData(search: String): LiveData<List<T>>
-
-    /**
      * Get All by Dynamic query
      */
     abstract fun getAllDynamicQuery(sqLiteQuery: SupportSQLiteQuery): DataSource.Factory<Int, T>
-    abstract fun getAllDynamicQueryFlow(sqLiteQuery: SupportSQLiteQuery): Flow<List<T>>
-
-//    abstract fun update(obj: T)
-
-//    abstract fun updateAll(objList: List<T>)
 
     /**
      * Deletes an entity
@@ -116,41 +105,8 @@ abstract class BaseDao<T> {
      */
     abstract suspend fun deleteAll()
 
-    // custom query definition
-    //    fun customQuery()
-
-    // Get All Entities from Table
-    //    fun getAll(): LiveData<List<T>> {
-    //        val query = SimpleSQLiteQuery(
-    //            "SELECT * FROM $tableName"
-    //        )
-    //        Timber.d("query sql = ${query.sql}")
-    //        return doGetAll(query)
-    //    }
-    //
-    //    @RawQuery(observedEntities = [Employee::class, Service::class])
-    //    fun doGetAll(query: SupportSQLiteQuery): LiveData<List<T>>
-
-    // Get Entity with given id from Table
-    //    fun getOne(id: String): LiveData<T> {
-    //        val query = SimpleSQLiteQuery(
-    //            "SELECT * FROM $tableName WHERE __KEY = \"$id\""
-    //        )
-    //        Timber.d("query sql = ${query.sql}")
-    //        return doGetOne(query)
-    //    }
-    //
-    //    @RawQuery(observedEntities = [Employee::class, Service::class])
-    //    fun doGetOne(query: SupportSQLiteQuery): LiveData<T>
-
-    // Delete all Entities from Table
-    //    fun deleteAll() {
-    //        val query = SimpleSQLiteQuery(
-    //            "DELETE FROM $tableName"
-    //        )
-    //        doDeleteAll(query)
-    //    }
-    //
-    //    @RawQuery(observedEntities = [Employee::class, Service::class])
-    //    fun doDeleteAll(query: SupportSQLiteQuery): Boolean
+//    abstract fun getAllSearchData(search: String): LiveData<List<T>>
+//    abstract fun getAllDynamicQueryFlow(sqLiteQuery: SupportSQLiteQuery): Flow<List<T>>
+//    abstract fun update(obj: T)
+//    abstract fun updateAll(objList: List<T>)
 }
