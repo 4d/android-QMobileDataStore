@@ -7,6 +7,6 @@
 package com.qmobile.qmobiledatastore.data
 
 interface RoomRelation {
-    val first: RoomData?
-    val second: RoomData?
+    val toOne: RoomData?
+    val source: RoomData?
 }
