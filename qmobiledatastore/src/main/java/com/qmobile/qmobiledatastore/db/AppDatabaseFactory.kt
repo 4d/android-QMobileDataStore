@@ -9,7 +9,6 @@ package com.qmobile.qmobiledatastore.db
 import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.qmobile.qmobiledatastore.utils.DATABASE_NAME
 import timber.log.Timber
 
@@ -19,7 +18,7 @@ object AppDatabaseFactory {
 //    @Volatile
 //    var INSTANCES = mutableMapOf<Class<*>, Any>()
 
-    lateinit var db: RoomDatabase
+    private lateinit var db: RoomDatabase
 
     /**
      * Returns instanced database or builds a new one
@@ -87,30 +86,7 @@ object AppDatabaseFactory {
                 } else {
                     Timber.d("No embedded database")
                 }
-                builder = builder.addCallback(
-                    object : RoomDatabase.Callback() {
-                        override fun onCreate(db: SupportSQLiteDatabase) {
-                            super.onCreate(db)
-                        }
-                    }
-                )
                 db = builder.build()
-                // Alternatively, this worked too
-//                if (!context.getDatabasePath(DATABASE_NAME).exists()) {
-//                    // Read static database
-//                    val source = context.applicationContext.assets.open("static.db").use {
-//                        it.readBytes()
-//                    }
-//                    // Write to Room database
-//                    with(context.getDatabasePath(DATABASE_NAME)) {
-//                        val folder = path.substringBeforeLast(File.separator)
-//                        File(folder).mkdirs()
-//                        writeBytes(source)
-//                    }
-//                }
-//                db = Room.databaseBuilder(context.applicationContext,
-//                    roomDatabaseClass, DATABASE_NAME)
-//                    .build()
             }
         }
         return db as T
