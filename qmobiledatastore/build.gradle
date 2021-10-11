@@ -21,6 +21,9 @@ dependencies {
     implementation Libs.androidx_room_runtime
     kapt Libs.androidx_room_compiler
 
+    // Jackson
+    implementation Libs.jackson
+
     // Paging
     implementation Libs.androidx_paging
 
