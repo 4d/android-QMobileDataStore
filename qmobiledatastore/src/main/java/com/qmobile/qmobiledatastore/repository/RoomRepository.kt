@@ -11,7 +11,8 @@ import androidx.paging.DataSource
 import androidx.sqlite.db.SupportSQLiteQuery
 import com.qmobile.qmobiledatastore.dao.BaseDao
 
-class RoomRepository<T>(private val baseDao: BaseDao<T>) :
+// open for TU
+open class RoomRepository<T>(private val baseDao: BaseDao<T>) :
     BaseRoomRepository<T> {
 
     override fun getOne(id: String): LiveData<T> {

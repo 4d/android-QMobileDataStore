@@ -66,7 +66,7 @@ class ConverterTest {
 
         Assert.assertNotNull(obj?.serviceProperty)
 
-        val subObj = obj?.serviceProperty as Service?
+        val subObj = obj?.serviceProperty
 
         Assert.assertNotNull(subObj)
         Assert.assertEquals(anotherKey, subObj?.__KEY)
