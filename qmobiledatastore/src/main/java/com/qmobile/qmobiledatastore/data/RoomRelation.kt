@@ -8,5 +8,5 @@ package com.qmobile.qmobiledatastore.data
 
 interface RoomRelation {
     val toOne: RoomData?
-    val source: RoomData?
+    val toMany: List<RoomData>
 }
