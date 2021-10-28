@@ -8,6 +8,7 @@ package com.qmobile.qmobiledatastore.dao
 
 import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
+import androidx.paging.PagingSource
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -16,7 +17,7 @@ import androidx.room.Update
 import androidx.sqlite.db.SupportSQLiteQuery
 
 @Suppress("TooManyFunctions")
-abstract class BaseDao<T> {
+abstract class BaseDao<T : Any> {
 
     abstract val tableName: String
 
@@ -91,9 +92,11 @@ abstract class BaseDao<T> {
     abstract fun getAll(): LiveData<List<T>>
 
     /**
-     * Get All by Dynamic query
+     * Get All with paging
      */
-    abstract fun getAllDynamicQuery(sqLiteQuery: SupportSQLiteQuery): DataSource.Factory<Int, T>
+    abstract fun getAllPagedList(sqLiteQuery: SupportSQLiteQuery): DataSource.Factory<Int, T>
+
+    abstract fun getAllPagingData(sqLiteQuery: SupportSQLiteQuery): PagingSource<Int, T>
 
     /**
      * Deletes an entity
@@ -104,9 +107,4 @@ abstract class BaseDao<T> {
      * Deletes table
      */
     abstract suspend fun deleteAll()
-
-//    abstract fun getAllSearchData(search: String): LiveData<List<T>>
-//    abstract fun getAllDynamicQueryFlow(sqLiteQuery: SupportSQLiteQuery): Flow<List<T>>
-//    abstract fun update(obj: T)
-//    abstract fun updateAll(objList: List<T>)
 }
