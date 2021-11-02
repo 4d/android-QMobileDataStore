@@ -18,5 +18,5 @@ interface DaoProvider {
     // Offers the possibility to populate the database for test purposes
 //    fun populateDatabase()
 
-    fun getRelationDao(tableName: String, relatedTableName: String): RelationBaseDao<RoomRelation>
+    fun getRelationDao(tableName: String, relatedTableName: String, relationName: String): RelationBaseDao<RoomRelation>
 }
