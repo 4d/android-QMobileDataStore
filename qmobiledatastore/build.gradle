@@ -25,7 +25,7 @@ dependencies {
     implementation Libs.jackson
 
     // Paging
-    implementation Libs.androidx_paging
+    implementation Libs.androidx_paging3
 
     // Utils
     implementation Libs.retrofit_converter_gson

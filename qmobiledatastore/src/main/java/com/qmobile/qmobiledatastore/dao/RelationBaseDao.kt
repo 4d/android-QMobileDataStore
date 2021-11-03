@@ -11,5 +11,5 @@ import com.qmobile.qmobiledatastore.data.RoomRelation
 
 interface RelationBaseDao<R : RoomRelation> {
 
-    fun getManyToOneRelation(relationId: String): LiveData<R>
+    fun getRelation(relationId: String): LiveData<R>
 }
