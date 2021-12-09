@@ -9,10 +9,11 @@ package com.qmobile.qmobiledatastore.db
 import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.qmobile.qmobiledatastore.utils.DATABASE_NAME
 import timber.log.Timber
 
 object AppDatabaseFactory {
+
+    private const val DATABASE_NAME = "4d_sample_app_database"
 
     // For Singleton instantiation
 //    @Volatile
