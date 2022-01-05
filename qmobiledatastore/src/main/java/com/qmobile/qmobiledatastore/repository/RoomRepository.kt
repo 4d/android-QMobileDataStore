@@ -16,33 +16,32 @@ import com.qmobile.qmobiledatastore.dao.BaseDao
 import kotlinx.coroutines.flow.Flow
 
 // open for TU
-open class RoomRepository<T : Any>(private val baseDao: BaseDao<T>) :
-    BaseRoomRepository<T> {
+open class RoomRepository<T : Any>(private val baseDao: BaseDao<T>) {
 
-    override fun getOne(id: String): LiveData<T> {
+    fun getOne(id: String): LiveData<T> {
         return baseDao.getOne(id)
     }
 
-    override fun getAllPagedList(sqLiteQuery: SupportSQLiteQuery): DataSource.Factory<Int, T> {
+    fun getAllPagedList(sqLiteQuery: SupportSQLiteQuery): DataSource.Factory<Int, T> {
         return baseDao.getAllPagedList(sqLiteQuery)
     }
 
-    override fun getAllPagingData(sqLiteQuery: SupportSQLiteQuery, pagingConfig: PagingConfig): Flow<PagingData<T>> {
+    fun getAllPagingData(sqLiteQuery: SupportSQLiteQuery, pagingConfig: PagingConfig): Flow<PagingData<T>> {
         return Pager(
             config = pagingConfig,
             pagingSourceFactory = { baseDao.getAllPagingData(sqLiteQuery) }
         ).flow
     }
 
-    override suspend fun insert(obj: T) {
+    suspend fun insert(obj: T) {
         baseDao.insertOrUpdate(obj)
     }
 
-    override suspend fun insertAll(objList: List<T>) {
+    suspend fun insertAll(objList: List<T>) {
         baseDao.insertOrUpdateAll(objList)
     }
 
-    override suspend fun deleteOne(id: String) {
+    suspend fun deleteOne(id: String) {
         return baseDao.deleteOne(id)
     }
 
