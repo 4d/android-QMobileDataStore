@@ -13,10 +13,10 @@ import com.qmobile.qmobiledatastore.data.RoomRelation
 interface DaoProvider {
 
     // Returns the correct DAO object of specific type
-    fun <T : Any> getDao(tableName: String): BaseDao<T>
+    fun <T : Any> getDao(source: String): BaseDao<T>
 
     // Offers the possibility to populate the database for test purposes
 //    fun populateDatabase()
 
-    fun getRelationDao(tableName: String, relatedTableName: String, relationName: String): RelationBaseDao<RoomRelation>
+    fun getRelationDao(source: String, dest: String, name: String): RelationBaseDao<RoomRelation>
 }
