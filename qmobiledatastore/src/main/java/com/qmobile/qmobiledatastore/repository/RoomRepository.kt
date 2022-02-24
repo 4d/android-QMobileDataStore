@@ -13,20 +13,21 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.sqlite.db.SupportSQLiteQuery
 import com.qmobile.qmobiledatastore.dao.BaseDao
+import com.qmobile.qmobiledatastore.data.RoomData
 import kotlinx.coroutines.flow.Flow
 
 // open for TU
-open class RoomRepository<T : Any>(private val baseDao: BaseDao<T>) {
+open class RoomRepository<T : RoomData>(private val baseDao: BaseDao<RoomData>) {
 
-    fun getOne(id: String): LiveData<T> {
+    fun getOne(id: String): LiveData<RoomData> {
         return baseDao.getOne(id)
     }
 
-    fun getAllPagedList(sqLiteQuery: SupportSQLiteQuery): DataSource.Factory<Int, T> {
+    fun getAllPagedList(sqLiteQuery: SupportSQLiteQuery): DataSource.Factory<Int, RoomData> {
         return baseDao.getAllPagedList(sqLiteQuery)
     }
 
-    fun getAllPagingData(sqLiteQuery: SupportSQLiteQuery, pagingConfig: PagingConfig): Flow<PagingData<T>> {
+    fun getAllPagingData(sqLiteQuery: SupportSQLiteQuery, pagingConfig: PagingConfig): Flow<PagingData<RoomData>> {
         return Pager(
             config = pagingConfig,
             pagingSourceFactory = { baseDao.getAllPagingData(sqLiteQuery) }

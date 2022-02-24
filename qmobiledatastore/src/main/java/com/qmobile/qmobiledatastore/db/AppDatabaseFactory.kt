@@ -81,7 +81,12 @@ object AppDatabaseFactory {
                     context.applicationContext,
                     roomDatabaseClass,
                     DATABASE_NAME
-                )
+                )/*.setQueryCallback(
+                    RoomDatabase.QueryCallback { sqlQuery, bindArgs ->
+                        Timber.d("SQL Query $sqlQuery")
+                    },
+                    my
+                )*/
                 if (context.assets.list("databases")?.contains("static.db") == true) {
                     builder = builder.createFromAsset("databases/static.db")
                 } else {
