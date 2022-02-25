@@ -15,7 +15,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Transaction
 import androidx.room.Update
 import androidx.sqlite.db.SupportSQLiteQuery
-import com.qmobile.qmobiledatastore.data.RoomData
 
 @Suppress("TooManyFunctions")
 abstract class BaseDao<T : Any> {
