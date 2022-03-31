@@ -12,4 +12,6 @@ import com.qmobile.qmobiledatastore.data.RoomData
 interface DaoProvider {
 
     fun getDao(source: String): BaseDao<RoomData>
+
+    fun getEmpDao(): Any
 }

@@ -81,7 +81,8 @@ object AppDatabaseFactory {
                     context.applicationContext,
                     roomDatabaseClass,
                     DATABASE_NAME
-                )/*.setQueryCallback(
+                ).allowMainThreadQueries()
+                /*.setQueryCallback(
                     RoomDatabase.QueryCallback { sqlQuery, bindArgs ->
                         Timber.d("SQL Query $sqlQuery")
                     },
