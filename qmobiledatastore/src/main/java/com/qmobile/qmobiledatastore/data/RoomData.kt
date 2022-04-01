@@ -7,3 +7,7 @@
 package com.qmobile.qmobiledatastore.data
 
 interface RoomData
+
+interface RoomEntity {
+    val __entity : RoomData
+}
