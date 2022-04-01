@@ -17,7 +17,7 @@ import androidx.room.Update
 import androidx.sqlite.db.SupportSQLiteQuery
 
 @Suppress("TooManyFunctions")
-abstract class BaseDao<T : Any, U: Any> {
+abstract class BaseDao<T : Any, U : Any> {
 
     /**
      * Inserts an entity
