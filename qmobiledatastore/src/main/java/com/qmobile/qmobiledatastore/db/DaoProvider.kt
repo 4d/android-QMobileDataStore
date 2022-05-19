@@ -7,16 +7,10 @@
 package com.qmobile.qmobiledatastore.db
 
 import com.qmobile.qmobiledatastore.dao.BaseDao
-import com.qmobile.qmobiledatastore.dao.RelationBaseDao
-import com.qmobile.qmobiledatastore.data.RoomRelation
+import com.qmobile.qmobiledatastore.data.RoomData
+import com.qmobile.qmobiledatastore.data.RoomEntity
 
 interface DaoProvider {
 
-    // Returns the correct DAO object of specific type
-    fun <T : Any> getDao(tableName: String): BaseDao<T>
-
-    // Offers the possibility to populate the database for test purposes
-//    fun populateDatabase()
-
-    fun getRelationDao(tableName: String, relatedTableName: String, relationName: String): RelationBaseDao<RoomRelation>
+    fun getDao(source: String): BaseDao<RoomEntity, RoomData>
 }

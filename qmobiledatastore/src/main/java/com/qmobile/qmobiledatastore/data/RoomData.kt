@@ -7,3 +7,8 @@
 package com.qmobile.qmobiledatastore.data
 
 interface RoomData
+
+@Suppress("VariableNaming", "PropertyName")
+interface RoomEntity {
+    val __entity: RoomData
+}
