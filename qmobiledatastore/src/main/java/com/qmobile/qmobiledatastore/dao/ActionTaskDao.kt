@@ -13,17 +13,17 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 @Dao
-abstract class ActionTaskDao {
+interface ActionTaskDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract suspend fun insert(obj: ActionTask): Long
+    suspend fun insert(obj: ActionTask): Long
 
     @Query("DELETE FROM ActionTask WHERE id = :taskID")
-    abstract suspend fun deleteById(taskID: Long)
+    suspend fun deleteById(taskID: Long)
 
     @Query("SELECT * FROM ActionTask")
-    abstract fun getAll(): LiveData<List<ActionTask>>
+    fun getAll(): LiveData<List<ActionTask>>
 
     @Query("DELETE FROM ActionTask")
-    abstract suspend fun deleteAll()
+    suspend fun deleteAll()
 }
