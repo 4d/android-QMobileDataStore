@@ -20,18 +20,20 @@ data class ActionTask(
 
 enum class STATUS {
     SUCCESS, // server response success = true
-    PENDING, // no response received yed
+    PENDING, // no response received yet
     ERROR_SERVER
-} // reponse server response success = false
+}
 
 data class ActionInfo(
-    val paramsToSubmit: HashMap<String, Any>?,
-    val metaDataToSubmit: HashMap<String, String>?,
-    val imagesToUpload: HashMap<String, String>?,
-    val validationMap: HashMap<String, Boolean>?,
-    val allParameters: String?,
+    val paramsToSubmit: HashMap<String, Any>? = null,
+    val metaDataToSubmit: HashMap<String, String>? = null,
+    val imagesToUpload: HashMap<String, String>? = null,
+    val validationMap: HashMap<String, Boolean>? = null,
+    val allParameters: String? = null,
     val actionName: String,
-    var tableName: String?,
+    var tableName: String,
     val currentRecordId: String?,
-    val actionUUID: String
+    val actionUUID: String,
+    val isOfflineCompatible: Boolean,
+    val preferredShortName: String
 )
