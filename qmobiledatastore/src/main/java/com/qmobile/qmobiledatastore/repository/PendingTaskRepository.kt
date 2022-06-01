@@ -12,7 +12,7 @@ import com.qmobile.qmobiledatastore.dao.ActionTaskDao
 
 class PendingTaskRepository(private val actionTaskDao: ActionTaskDao) {
 
-    fun getOne(id: Long): LiveData<ActionTask> {
+    fun getOne(id: String): LiveData<ActionTask> {
         return actionTaskDao.getOne(id)
     }
 
@@ -24,19 +24,27 @@ class PendingTaskRepository(private val actionTaskDao: ActionTaskDao) {
         return actionTaskDao.getAllPending()
     }
 
-    suspend fun insert(obj: ActionTask) {
+    suspend fun insertOrReplace(obj: ActionTask) {
         actionTaskDao.insertOrUpdate(obj)
+    }
+
+    suspend fun insert(obj: ActionTask): Long {
+       return actionTaskDao.insert(obj)
     }
 
     suspend fun insertAll(objList: List<ActionTask>) {
         actionTaskDao.insertOrUpdateAll(objList)
     }
 
-    suspend fun deleteOne(id: Long) {
+    suspend fun deleteOne(id: String) {
         return actionTaskDao.deleteOne(id)
     }
 
     suspend fun deleteAll() {
         return actionTaskDao.deleteAll()
+    }
+
+    suspend fun deleteList(idList: List<String>) {
+        return actionTaskDao.deleteList(idList)
     }
 }

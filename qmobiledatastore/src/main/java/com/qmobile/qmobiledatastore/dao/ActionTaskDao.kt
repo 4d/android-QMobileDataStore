@@ -22,7 +22,7 @@ interface ActionTaskDao {
     suspend fun insert(obj: ActionTask): Long
 
     @Query("DELETE FROM ActionTask WHERE id = :taskID")
-    suspend fun deleteOne(taskID: Long)
+    suspend fun deleteOne(taskID: String)
 
     @Query("SELECT * FROM ActionTask")
     fun getAll(): LiveData<List<ActionTask>>
@@ -31,10 +31,13 @@ interface ActionTaskDao {
     fun getAllPending(): LiveData<List<ActionTask>>
 
     @Query("SELECT * FROM ActionTask WHERE id = :taskID")
-    fun getOne(taskID: Long): LiveData<ActionTask>
+    fun getOne(taskID: String): LiveData<ActionTask>
 
     @Query("DELETE FROM ActionTask")
     suspend fun deleteAll()
+
+    @Query("DELETE FROM ActionTask WHERE id in (:idList)")
+    suspend fun deleteList(idList: List<String>)
 
     /**
      * Inserts a list of entities
