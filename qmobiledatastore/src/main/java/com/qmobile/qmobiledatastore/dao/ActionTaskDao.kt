@@ -58,17 +58,6 @@ interface ActionTaskDao {
     suspend fun updateAll(objList: List<ActionTask>)
 
     /**
-     * Tries to insert an entity. If it already exists, updates it.
-     */
-    @Transaction
-    suspend fun insertOrUpdate(obj: ActionTask) {
-        val id = insert(obj)
-        if (id == -1L) {
-            update(obj)
-        }
-    }
-
-    /**
      * Tries to insert a list of entities. If an entity already exists, updates it.
      */
     @Transaction

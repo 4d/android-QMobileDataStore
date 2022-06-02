@@ -25,7 +25,7 @@ class PendingTaskRepository(private val actionTaskDao: ActionTaskDao) {
     }
 
     suspend fun insertOrReplace(obj: ActionTask) {
-        actionTaskDao.insertOrUpdate(obj)
+        actionTaskDao.insert(obj)
     }
 
     suspend fun insert(obj: ActionTask): Long {
