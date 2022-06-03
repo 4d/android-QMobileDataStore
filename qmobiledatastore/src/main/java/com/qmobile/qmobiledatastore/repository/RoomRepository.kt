@@ -17,7 +17,7 @@ import com.qmobile.qmobiledatastore.data.RoomData
 import com.qmobile.qmobiledatastore.data.RoomEntity
 import kotlinx.coroutines.flow.Flow
 
-// open for TU
+// open for Tests
 open class RoomRepository<T : RoomData>(private val baseDao: BaseDao<RoomEntity, RoomData>) {
 
     fun getOne(id: String): LiveData<RoomEntity> {
@@ -46,32 +46,4 @@ open class RoomRepository<T : RoomData>(private val baseDao: BaseDao<RoomEntity,
     suspend fun deleteOne(id: String) {
         return baseDao.deleteOne(id)
     }
-
-    /*override suspend fun delete(obj: T) {
-        baseDao.delete(obj)
-    }*/
-
-    /*override suspend fun deleteAll() {
-        baseDao.deleteAll()
-    }*/
-
-    /*override fun getAll(): LiveData<List<T>> {
-      return baseDao.getAll()
-    }*/
-
-    /*override fun getSearchAllByQuery(query: String): LiveData<List<T>> {
-        return baseDao.getAllSearchData(query)
-    }*/
-
-    /*override fun getAllDynamicQueryFlow(sqLiteQuery: SupportSQLiteQuery): Flow<List<T>> {
-        return baseDao.getAllDynamicQueryFlow(sqLiteQuery) // Get searched dogs from Room Database
-            // Combine the result with another flow
-//                .combine(topBreedsFlow) { dogs, topDogs ->
-//                    dogs.applyToDog(topDogs)
-//                }
-            .flowOn(Dispatchers.Default)
-            // Return the latest values
-            .conflate()
-//        return baseDao.getAllDynamicQueryFlow(sqLiteQuery)
-    }*/
 }
