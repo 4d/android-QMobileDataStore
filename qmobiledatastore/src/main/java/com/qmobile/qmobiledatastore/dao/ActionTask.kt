@@ -29,8 +29,8 @@ data class ActionTask(
     else
         this.relatedItemId == currentItemId // From EntityDetailFragment (show only current entity tasks)
 
-    fun historyElement(): Boolean = this.status == Status.SUCCESS || this.status == Status.ERROR_SERVER
-    fun pendingElement(): Boolean = this.status == Status.PENDING
+    fun isHistory(): Boolean = this.status == Status.SUCCESS || this.status == Status.ERROR_SERVER
+    fun isPending(): Boolean = this.status == Status.PENDING
 
     enum class Status {
         SUCCESS,
