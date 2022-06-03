@@ -9,7 +9,7 @@ import kotlin.collections.HashMap
 
 @Entity
 data class ActionTask(
-    var status: STATUS,
+    var status: Status,
     val date: Date,
     val relatedItemId: String?, // used as primary key to send with "currentRecord actions"
     val label: String,
@@ -29,14 +29,14 @@ data class ActionTask(
     else
         this.relatedItemId == currentItemId // From EntityDetailFragment (show only current entity tasks)
 
-    fun historyElement(): Boolean = this.status == STATUS.SUCCESS || this.status == STATUS.ERROR_SERVER
-    fun pendingElement(): Boolean = this.status == STATUS.PENDING
-}
+    fun historyElement(): Boolean = this.status == Status.SUCCESS || this.status == Status.ERROR_SERVER
+    fun pendingElement(): Boolean = this.status == Status.PENDING
 
-enum class STATUS {
-    SUCCESS, // server response success = true
-    PENDING, // no response received yet
-    ERROR_SERVER
+    enum class Status {
+        SUCCESS,
+        PENDING,
+        ERROR_SERVER
+    }
 }
 
 data class ActionInfo(
