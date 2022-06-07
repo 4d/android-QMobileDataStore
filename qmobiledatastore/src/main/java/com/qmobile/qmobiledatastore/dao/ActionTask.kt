@@ -47,7 +47,7 @@ data class ActionInfo(
     val allParameters: String? = null,
     val actionName: String,
     var tableName: String,
-    val actionId: String,
+    val actionUUID: String,
     val isOfflineCompatible: Boolean,
     val preferredShortName: String
 )
