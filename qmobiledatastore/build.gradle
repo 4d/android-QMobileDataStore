@@ -14,7 +14,6 @@ dependencies {
     // Common
     implementation Libs.androidx_appcompat
     implementation Libs.kotlin_coroutines_core
-    implementation Libs.kotlin_stdlib
 
     // Room
     implementation Libs.androidx_room
