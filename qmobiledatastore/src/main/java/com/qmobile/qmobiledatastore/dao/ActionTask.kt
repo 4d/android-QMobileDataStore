@@ -10,7 +10,7 @@ import kotlin.collections.HashMap
 @Entity
 data class ActionTask(
     var status: Status,
-    val date: Date,
+    var date: Date,
     val relatedItemId: String?, // used as primary key to send with "currentRecord actions"
     val label: String,
     val actionInfo: ActionInfo, // contain information about related action
@@ -31,6 +31,8 @@ data class ActionTask(
 
     fun isHistory(): Boolean = this.status == Status.SUCCESS || this.status == Status.ERROR_SERVER
     fun isPending(): Boolean = this.status == Status.PENDING
+    fun isSuccess(): Boolean = this.status == Status.SUCCESS
+    fun isErrorServer(): Boolean = this.status == Status.ERROR_SERVER
 
     enum class Status {
         SUCCESS,
