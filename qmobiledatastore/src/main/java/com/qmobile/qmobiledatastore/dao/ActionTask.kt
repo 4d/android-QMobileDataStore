@@ -43,6 +43,7 @@ data class ActionTask(
 
 data class ActionInfo(
     val paramsToSubmit: HashMap<String, Any>? = null,
+    var errors: Map<String, String>? = null,
     val metaDataToSubmit: HashMap<String, String>? = null,
     val imagesToUpload: HashMap<String, String>? = null,
     val validationMap: HashMap<String, Boolean>? = null,
