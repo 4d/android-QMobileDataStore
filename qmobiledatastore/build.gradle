@@ -11,35 +11,19 @@ apply from: "$rootDir/buildscripts/git-hash.gradle"
 
 dependencies {
 
-    // Common
-    implementation Libs.androidx_appcompat
-    implementation Libs.kotlin_coroutines_core
-
     // Room
-    implementation Libs.androidx_room
     implementation Libs.androidx_room_runtime
-    kapt Libs.androidx_room_compiler
-    implementation Libs.room_paging
-
-    // Jackson
-    implementation Libs.jackson
 
     // Paging
     implementation Libs.androidx_paging3
+    kapt Libs.androidx_room_compiler
 
     // Utils
-    implementation Libs.retrofit_converter_gson
     implementation Libs.timber
 
     // Testing
+    testImplementation Libs.jackson
     testImplementation Libs.junit
-
-    // Testing
-    testImplementation Libs.androidx_core_testing
-    testImplementation Libs.androidx_junit
-    testImplementation Libs.androidx_runner
-    testImplementation Libs.mockito
-    testImplementation Libs.robolectric
 }
 
 def libraryGroupId = 'com.qmobile.qmobiledatastore'
