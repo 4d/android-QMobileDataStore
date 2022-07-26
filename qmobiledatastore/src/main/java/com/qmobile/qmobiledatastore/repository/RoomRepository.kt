@@ -46,4 +46,8 @@ open class RoomRepository<T : RoomData>(private val baseDao: BaseDao<RoomEntity,
     suspend fun deleteOne(id: String) {
         return baseDao.deleteOne(id)
     }
+
+    suspend fun deleteAll() {
+        return baseDao.deleteAll()
+    }
 }
