@@ -48,7 +48,7 @@ data class ActionInfo(
     var errors: Map<String, String>? = null,
     val metaDataToSubmit: HashMap<String, String>? = null,
     val imagesToUpload: HashMap<String, String>? = null,
-    val validationMap: HashMap<String, Boolean>? = null,
+    val validationMap: LinkedHashMap<String, Boolean>? = null,
     val allParameters: String? = null,
     val actionName: String,
     var tableName: String,
