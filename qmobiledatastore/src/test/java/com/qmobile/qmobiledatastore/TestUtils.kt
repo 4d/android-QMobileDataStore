@@ -15,6 +15,7 @@ data class CustomEmployee(
     override val __TIMESTAMP: String? = null
 ) : EntityModel
 
+@Suppress("PropertyName")
 interface EntityModel {
     val __GlobalStamp: Int?
     val __KEY: String?
