@@ -14,6 +14,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Transaction
 import androidx.room.Update
 import androidx.sqlite.db.SupportSQLiteQuery
+import kotlinx.coroutines.flow.Flow
 
 @Suppress("TooManyFunctions")
 abstract class BaseDao<T : Any, U : Any> {
@@ -24,6 +25,8 @@ abstract class BaseDao<T : Any, U : Any> {
     abstract fun getOne(id: String): LiveData<T>
 
     abstract fun getAll(): LiveData<List<T>>
+
+    abstract fun getAllFlow(sqLiteQuery: SupportSQLiteQuery): Flow<List<T>>
 
     abstract fun getAllPagedList(sqLiteQuery: SupportSQLiteQuery): DataSource.Factory<Int, T>
 
