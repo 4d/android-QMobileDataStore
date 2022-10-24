@@ -24,6 +24,10 @@ open class RoomRepository<T : RoomData>(private val baseDao: BaseDao<RoomEntity,
         return baseDao.getOne(id)
     }
 
+    fun getAllFlow(sqLiteQuery: SupportSQLiteQuery): Flow<List<RoomEntity>> {
+        return baseDao.getAllFlow(sqLiteQuery)
+    }
+
     fun getAllPagedList(sqLiteQuery: SupportSQLiteQuery): DataSource.Factory<Int, RoomEntity> {
         return baseDao.getAllPagedList(sqLiteQuery)
     }
