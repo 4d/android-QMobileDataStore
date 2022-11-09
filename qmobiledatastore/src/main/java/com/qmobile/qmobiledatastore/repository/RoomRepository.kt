@@ -7,6 +7,7 @@
 package com.qmobile.qmobiledatastore.repository
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -25,6 +26,10 @@ open class RoomRepository<T : RoomData>(private val baseDao: BaseDao<RoomEntity,
 
     fun getAllFlow(sqLiteQuery: SupportSQLiteQuery): Flow<List<RoomEntity>> {
         return baseDao.getAllFlow(sqLiteQuery)
+    }
+
+    fun getAllPagedList(sqLiteQuery: SupportSQLiteQuery): DataSource.Factory<Int, RoomEntity> {
+        return baseDao.getAllPagedList(sqLiteQuery)
     }
 
     fun getAllPagingData(sqLiteQuery: SupportSQLiteQuery, pagingConfig: PagingConfig): Flow<PagingData<RoomEntity>> {

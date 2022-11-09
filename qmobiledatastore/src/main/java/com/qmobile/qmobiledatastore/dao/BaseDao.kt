@@ -7,6 +7,7 @@
 package com.qmobile.qmobiledatastore.dao
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.paging.PagingSource
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -26,6 +27,8 @@ abstract class BaseDao<T : Any, U : Any> {
     abstract fun getAll(): LiveData<List<T>>
 
     abstract fun getAllFlow(sqLiteQuery: SupportSQLiteQuery): Flow<List<T>>
+
+    abstract fun getAllPagedList(sqLiteQuery: SupportSQLiteQuery): DataSource.Factory<Int, T>
 
     abstract fun getAllPagingData(sqLiteQuery: SupportSQLiteQuery): PagingSource<Int, T>
 
