@@ -10,7 +10,7 @@ import androidx.lifecycle.LiveData
 import com.qmobile.qmobiledatastore.dao.ActionTask
 import com.qmobile.qmobiledatastore.dao.ActionTaskDao
 
-class PendingTaskRepository(private val actionTaskDao: ActionTaskDao) {
+class TaskRepository(private val actionTaskDao: ActionTaskDao) {
 
     fun getOne(id: String): LiveData<ActionTask> {
         return actionTaskDao.getOne(id)

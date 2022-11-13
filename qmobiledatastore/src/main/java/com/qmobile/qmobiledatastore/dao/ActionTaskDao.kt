@@ -12,7 +12,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
-@Suppress("TooManyFunctions")
 @Dao
 interface ActionTaskDao {
 
