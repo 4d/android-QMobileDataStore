@@ -4,6 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.qmobile.qmobiledatastore.data.RoomData
 import org.json.JSONArray
+import org.json.JSONObject
 import java.util.Date
 import java.util.UUID
 import kotlin.collections.HashMap
@@ -42,6 +43,19 @@ data class ActionTask(
         return this.actionInfo.allParameters?.let {
             JSONArray(it).length()
         } ?: 0
+    }
+
+    fun getParametersAsList(): List<JSONObject> {
+        val list = mutableListOf<JSONObject>()
+        this.actionInfo.allParameters?.let {
+            val allParameters = JSONArray(it)
+            for (i in 0 until allParameters.length()) {
+                (allParameters.get(i) as? JSONObject)?.let { actionParameter ->
+                    list.add(actionParameter)
+                }
+            }
+        }
+        return list
     }
 
     enum class Status {
