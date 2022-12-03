@@ -22,7 +22,6 @@ object Versions {
     const val atsl_junit = "1.1.2"
     const val barcode_scanning = "17.0.2"
     const val camerax = "1.1.0"
-    const val dynamic_toasts = "4.1.2"
     const val espresso = "3.4.0"
     const val espresso_contrib = "3.0.2"
     const val fragment_ktx = "1.5.2"
@@ -36,7 +35,7 @@ object Versions {
     const val kotlin_coroutines = "1.6.4"
     const val leakcanary = "2.0"
     const val lifecycle = "2.5.1"
-    const val material = "1.8.0-alpha01"
+    const val material = "1.8.0-alpha03"
     const val mockito = "4.7.0"
     const val mockk = "1.12.4"
     const val multidex = "2.0.1"
@@ -53,6 +52,7 @@ object Versions {
     const val rx_android = "2.1.1"
     const val rxjava2 = "2.2.21"
     const val signature_pad = "1.3.1"
+    const val splashscreen = "1.0.0"
     const val swiperefreshlayout = "1.1.0"
     const val timber = "5.0.1"
 }
@@ -97,6 +97,7 @@ object Libs {
 
     // Common + Layout
     const val material = "com.google.android.material:material:${Versions.material}"
+    const val splashscreen = "androidx.core:core-splashscreen:${Versions.splashscreen}"
     const val swiperefreshlayout =
         "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swiperefreshlayout}"
 
@@ -152,9 +153,9 @@ object Libs {
     const val barcode_scanning = "com.google.mlkit:barcode-scanning:${Versions.barcode_scanning}"
 
     // Utils
-    const val dynamic_toasts = "com.pranavpandey.android:dynamic-toasts:${Versions.dynamic_toasts}"
     const val insetter = "dev.chrisbanes.insetter:insetter:${Versions.insetter}"
     const val leakcanary = "com.squareup.leakcanary:leakcanary-android:${Versions.leakcanary}"
+    const val play_services_auth = "com.google.android.gms:play-services-auth:${Versions.play_services}"
     const val play_services_location = "com.google.android.gms:play-services-location:${Versions.play_services}"
     const val signature_pad = "com.github.gcacace:signature-pad:${Versions.signature_pad}"
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
