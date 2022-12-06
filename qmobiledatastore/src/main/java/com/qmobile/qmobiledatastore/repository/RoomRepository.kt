@@ -40,11 +40,11 @@ open class RoomRepository<T : RoomData>(private val baseDao: BaseDao<RoomEntity,
     }
 
     suspend fun insert(obj: T) {
-        baseDao.insertOrUpdate(obj)
+        baseDao.upsert(obj)
     }
 
     suspend fun insertAll(objList: List<T>) {
-        baseDao.insertOrUpdateAll(objList)
+        baseDao.upsertAll(objList)
     }
 
     suspend fun deleteOne(id: String) {

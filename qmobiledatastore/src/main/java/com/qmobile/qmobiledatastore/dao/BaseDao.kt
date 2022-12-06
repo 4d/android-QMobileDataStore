@@ -13,6 +13,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Transaction
 import androidx.room.Update
+import androidx.room.Upsert
 import androidx.sqlite.db.SupportSQLiteQuery
 import kotlinx.coroutines.flow.Flow
 
@@ -41,11 +42,24 @@ abstract class BaseDao<T : Any, U : Any> {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     abstract suspend fun insertAll(obj: List<U>): List<Long>
 
+    /**
+     * UPDATE
+     */
     @Update
     abstract suspend fun update(obj: U)
 
     @Update
     abstract suspend fun updateAll(objList: List<U>)
+
+    /**
+     * UPSERT
+     */
+
+    @Upsert
+    abstract suspend fun upsert(obj: U)
+
+    @Upsert
+    abstract suspend fun upsertAll(objList: List<U>)
 
     @Transaction
     open suspend fun insertOrUpdate(obj: U) {
