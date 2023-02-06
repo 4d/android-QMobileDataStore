@@ -24,6 +24,10 @@ open class RoomRepository<T : RoomData>(private val baseDao: BaseDao<RoomEntity,
         return baseDao.getOne(id)
     }
 
+    fun doesEntityExist(id: String): LiveData<Boolean> {
+        return baseDao.doesEntityExist(id)
+    }
+
     fun getAllFlow(sqLiteQuery: SupportSQLiteQuery): Flow<List<RoomEntity>> {
         return baseDao.getAllFlow(sqLiteQuery)
     }

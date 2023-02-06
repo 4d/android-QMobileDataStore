@@ -33,6 +33,8 @@ abstract class BaseDao<T : Any, U : Any> {
 
     abstract fun getAllPagingData(sqLiteQuery: SupportSQLiteQuery): PagingSource<Int, T>
 
+    abstract fun doesEntityExist(id: String): LiveData<Boolean>
+
     /**
      * INSERT
      */
