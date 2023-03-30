@@ -31,6 +31,7 @@ lint:
     - *prepare_sdk
 #    - rm -fr .gradle/caches
 #    - rm -fr build
+    - env
     - ./gradlew ktlintFormat --console=rich
     - ./gradlew detekt --console=rich
   artifacts:
