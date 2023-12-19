@@ -3,6 +3,7 @@ package com.qmobile.qmobiledatastore.dao
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.qmobile.qmobiledatastore.data.RoomData
+import com.qmobile.qmobiledatastore.data.RoomEntity
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.Date
@@ -38,6 +39,16 @@ data class ActionTask(
     fun isPending(): Boolean = this.status == Status.PENDING
     fun isSuccess(): Boolean = this.status == Status.SUCCESS
     fun isErrorServer(): Boolean = this.status == Status.ERROR_SERVER
+
+    @Suppress("UNCHECKED_CAST")
+    fun match(actionName: String, tableName: String, primaryKey: Any?): Boolean  {
+        if (actionName != this.actionInfo.actionName) return false
+        if (tableName != this.actionInfo.tableName) return false
+
+        val contextMap: Map<String, Any>? = actionContent?.get("context") as? Map<String, Any>
+        val entityMap: Map<String, Any>? = contextMap?.get("entity") as? Map<String, Any>
+        return (primaryKey ==  entityMap?.get("primaryKey"))
+    }
 
     fun getNbParameters(): Int {
         return this.actionInfo.allParameters?.let {
